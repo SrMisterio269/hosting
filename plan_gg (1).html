@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan GG - Crear Servidor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #4caf50;
+    }
+    .plan-info, .form-section, .server-list {
+      background: #1e1e1e;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #2a2a2a;
+      color: white;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .server-item {
+      border-bottom: 1px solid #333;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Plan GG Gratuito</h1>
+  <div class="plan-info">
+    <p><strong>Almacenamiento:</strong> 150 GB</p>
+    <p><strong>Compatibilidad:</strong> 500 Plugins</p>
+    <p><strong>Slots:</strong> 300 jugadores</p>
+    <p><strong>Uptime:</strong> 24/7</p>
+    <p><strong>Servidores disponibles:</strong> <span id="server-count">0</span>/50</p>
+  </div>
+
+  <div class="form-section">
+    <h2>Crear un nuevo servidor</h2>
+    <form id="serverForm">
+      <label for="software">Seleccionar software:</label>
+      <select id="software" required>
+        <option value="">-- Elige uno --</option>
+        <option value="PaperMC">PaperMC</option>
+        <option value="Spigot">Spigot</option>
+        <option value="BungeeCord">BungeeCord</option>
+        <option value="Velocity">Velocity</option>
+        <option value="Purpur">Purpur</option>
+      </select>
+
+      <label for="version">Seleccionar versión:</label>
+      <select id="version" required>
+        <option value="">-- Elige una versión --</option>
+      </select>
+
+      <button type="submit">Crear servidor</button>
+    </form>
+  </div>
+
+  <div class="server-list">
+    <h2>Mis servidores</h2>
+    <div id="servers"></div>
+  </div>
+
+  <script>
+    const versionSelect = document.getElementById('version');
+    for (let i = 8; i <= 21; i++) {
+      const option = document.createElement('option');
+      option.value = '1.' + i;
+      option.textContent = '1.' + i;
+      versionSelect.appendChild(option);
+    }
+
+    let serverCount = 0;
+    const maxServers = 50;
+
+    document.getElementById('serverForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (serverCount >= maxServers) {
+        alert('Has alcanzado el límite de servidores (50)');
+        return;
+      }
+
+      const software = document.getElementById('software').value;
+      const version = document.getElementById('version').value;
+
+      if (!software || !version) {
+        alert('Por favor selecciona software y versión.');
+        return;
+      }
+
+      const serversDiv = document.getElementById('servers');
+      const newServer = document.createElement('div');
+      newServer.className = 'server-item';
+      newServer.textContent = `Servidor ${serverCount + 1}: ${software} - Versión ${version}`;
+      serversDiv.appendChild(newServer);
+
+      serverCount++;
+      document.getElementById('server-count').textContent = serverCount;
+    });
+  </script>
+</body>
+</html>

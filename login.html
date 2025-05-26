@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - Mi Hosting Minecraft</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+      width: 300px;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #4caf50;
+      text-align: center;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      background-color: #2a2a2a;
+      color: white;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form action="#" method="POST">
+      <input type="text" placeholder="Correo electrónico" name="email" required />
+      <input type="text" placeholder="Nombre de usuario" name="username" required />
+      <input type="password" placeholder="Contraseña" name="password" required />
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+</body>
+</html>
